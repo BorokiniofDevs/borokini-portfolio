@@ -10,7 +10,8 @@ import { Footer } from "./layout/Footer";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Navbar />
+          <script src="https://vivian-chat.netlify.app/vivian-widget.js"></script>
+
       <main>
         <Hero />
         <About />
