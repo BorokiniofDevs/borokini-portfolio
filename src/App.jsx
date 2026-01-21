@@ -10,7 +10,7 @@ import { Footer } from "./layout/Footer";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Navbar />
+
       <main>
         <Hero />
         <About />
