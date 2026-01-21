@@ -9,36 +9,25 @@ import { Footer } from "./layout/Footer";
 
 function App() {
   useEffect(() => {
-    // 1️⃣ Global config (must exist BEFORE script loads)
+    // 1) Global config (BEFORE script loads)
     window.VIVIAN_CHAT_CONFIG = {
       position: "right",
       iconUrl: "https://vivian-chat.netlify.app/vivian-icon.png",
     };
 
-    // 2️⃣ Prevent duplicate loads (VERY IMPORTANT in React/Vite)
-    if (document.getElementById("vivian-widget-script")) return;
+    // 2) Prevent duplicate load
+    if (document.getElementById("vivian-widget")) return;
 
-    // 3️⃣ Inject the widget script
-    const script = document.createElement("script");
-    script.id = "vivian-widget-script";
-    script.src = "https://vivian-chat.netlify.app/vivian-widget.js";
-    script.async = true;
+    // 3) Inject script
+    const s = document.createElement("script");
+    s.id = "vivian-widget";
+    s.src = "https://vivian-chat.netlify.app/vivian-widget.js?v=7";
+    s.async = true;
 
-    script.onload = () => {
-      console.log("[Vivian] widget loaded");
-    };
+    s.onload = () => console.log("[Vivian] loaded");
+    s.onerror = () => console.error("[Vivian] failed to load");
 
-    script.onerror = () => {
-      console.error("[Vivian] failed to load widget");
-    };
-
-    document.body.appendChild(script);
-
-    // 4️⃣ Optional cleanup (safe for HMR)
-    return () => {
-      // Do NOT remove the script on unmount
-      // Removing it causes re-injection loops
-    };
+    document.body.appendChild(s);
   }, []);
 
   return (
