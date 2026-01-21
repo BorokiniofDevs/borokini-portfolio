@@ -10,13 +10,24 @@ import { Footer } from "./layout/Footer";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+              <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.VIVIAN_CHAT_CONFIG = {
+                position: "right",
+                iconUrl: "https://vivian-chat.netlify.app//vivian-icon.png"
+              };
+            `,
+          }}
+        />
+        <script src="https://vivian-chat.netlify.app/vivian-widget.js" async></script>
       <Navbar />
       <main>
         <Hero />
         <About />
         <Projects />
         <Experience />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
       <Footer />
