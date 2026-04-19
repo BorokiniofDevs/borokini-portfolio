@@ -10,7 +10,6 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Agently Chat Widget -->
-    <!-- Agently Chat Widget -->
     <iframe
       id="agently-widget-48e80f17-f5fb-486d-bb19-7bb886828441"
       src="https://agently-server-v1.vercel.app/chatbot-widget/48e80f17-f5fb-486d-bb19-7bb886828441"
@@ -20,18 +19,29 @@
         right: 20px;
         left: auto;
         width: 420px;
-        height: 700px;
-        max-width: calc(100vw - 32px);
-        max-height: calc(100vh - 32px);
+        height: 800px;
+        max-width: 90vw;
+        max-height: 90vh;
         border: none;
         background: transparent;
         z-index: 2147483646;
         overflow: hidden;
+        outline: none;
+        display: block;
+        visibility: visible;
+        pointer-events: auto;
       "
       scrolling="no"
       frameborder="0"
       allow="microphone"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads allow-storage-access-by-user-activation"
+      referrerpolicy="no-referrer-when-downgrade"
+      loading="eager"
+      onload="console.info('Agently widget iframe loaded')"
+      onerror="
+        this.style.display = 'none';
+        console.error('Agently widget iframe failed to load');
+      "
       title="Chat widget"
     ></iframe>
   </body>
